@@ -8,6 +8,7 @@ pipeline {
             steps {
                 sh 'ls'
         }
+        }
         stage('build-receiver') {
             steps {
                 sh 'ls'
