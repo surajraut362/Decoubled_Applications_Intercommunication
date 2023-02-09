@@ -28,7 +28,7 @@ pipeline {
     stage('deploy') {
       steps {
         unstash "build"
-        sh 'ls'
+        sh 'build=${BUILD_ID} docker-compose up -d'
 
       }
       agent {
