@@ -10,6 +10,9 @@ pipeline {
         }
         }
         stage('build-receiver') {
+            options{
+                skipDefaultCheckout true
+            }
             steps {
                 sh 'ls'
             }
