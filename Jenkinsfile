@@ -2,7 +2,7 @@ pipeline {
 
   // Where to run stuff.
   agent any
-  // What to run goes here.
+  // What to run goes here
   environment {
     DOCKERHUB_CREDENTIALS = credentials('dockerhub-cred')
   }
