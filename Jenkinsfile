@@ -1,4 +1,4 @@
-ipeline {
+pipeline {
 
     // Where to run stuff.
     agent any
