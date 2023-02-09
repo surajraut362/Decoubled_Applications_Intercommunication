@@ -7,6 +7,7 @@ pipeline {
         stage('build-sender') {
             steps {
                 sh 'ls'
+                stash includes: 'docker-compose.yml', name: 'script'
         }
         }
         stage('build-receiver') {
@@ -14,6 +15,7 @@ pipeline {
                 skipDefaultCheckout true
             }
             steps {
+                unstash includes: 'script'
                 sh 'ls'
             }
             agent { 
