@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('build-sender') {
       steps {
-        sh 'ls'
+        sh 'docker --version'
       }
     }
 
