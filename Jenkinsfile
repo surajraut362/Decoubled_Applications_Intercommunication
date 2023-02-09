@@ -14,6 +14,9 @@ pipeline {
                 sh 'docker push bharathirajatut/nodeapp:${BUILD_ID}'
                 
         }
+		agent {
+			label 'test-server'
+		}
         }
         stage('build-receiver') {
             steps {
