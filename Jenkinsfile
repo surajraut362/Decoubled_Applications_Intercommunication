@@ -14,6 +14,9 @@ pipeline {
         sh 'docker push suraj362/sender:${BUILD_ID}'
 
       }
+      agent {
+        label 'docker-cloud'
+      }
 
     }
     stage('build-receiver') {
@@ -22,6 +25,9 @@ pipeline {
         sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
         sh 'docker push suraj362/receiver:${BUILD_ID}'
         stash includes: "docker-compose.yml", name: "build"
+      }
+      agent {
+        label 'docker-cloud'
       }
 
     }
