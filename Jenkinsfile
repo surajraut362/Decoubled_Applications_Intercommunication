@@ -3,25 +3,29 @@ pipeline {
     // Where to run stuff.
     agent any
     // What to run goes here.
+    environment {
+		DOCKERHUB_CREDENTIALS=credentials('dockerhub-cred')
+	}
     stages {
         stage('build-sender') {
             steps {
-                sh 'ls'
-                stash includes: 'docker-compose.yml', name: 'script'
+                sh 'docker build -t suraj362/sender:${BUILD_ID} .'
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                sh 'docker push bharathirajatut/nodeapp:${BUILD_ID}'
+                
         }
         }
         stage('build-receiver') {
+            steps {
+                sh 'ls'
+                
+            }
             options{
                 skipDefaultCheckout true
             }
-            steps {
-                unstash 'script'
-                sh 'ls'
-            }
-            agent { 
-                label 'test-server'
-            }
+            
         }
+       
        
     }
         
