@@ -15,7 +15,7 @@ pipeline {
                 skipDefaultCheckout true
             }
             steps {
-                unstash includes: 'script'
+                unstash 'script'
                 sh 'ls'
             }
             agent { 
