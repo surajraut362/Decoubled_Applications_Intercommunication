@@ -11,7 +11,7 @@ pipeline {
             steps {
                 sh 'docker build -t suraj362/sender:${BUILD_ID} ./sender'
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                sh 'docker push bharathirajatut/nodeapp:${BUILD_ID}'
+                sh 'docker push suraj362/sender:${BUILD_ID}'
                 
         }
 		agent {
