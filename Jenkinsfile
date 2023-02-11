@@ -4,6 +4,7 @@ pipeline {
   agent any
   // What to run goes here
   environment {
+    //Docker Hub Creds
     DOCKERHUB_CREDENTIALS = credentials('dockerhub-cred')
   }
   stages {
